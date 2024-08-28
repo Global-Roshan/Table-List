@@ -4,5 +4,6 @@ export interface emp
     name : string,
     gender : string,
     dob : string,
-    role : string
+    role : string,
+    readonly bool? : boolean
 }

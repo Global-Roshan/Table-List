@@ -1,0 +1,23 @@
+.example-card
+{
+    max-width: 50%;
+    margin: auto;
+    justify-content: center;
+}
+
+
+
+mat-card-header{
+    display: flex;
+}
+
+.buttonsContainer{
+    
+    justify-content: center;
+    
+}
+
+button{
+    margin: 15px;
+}
+

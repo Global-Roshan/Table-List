@@ -1,0 +1,31 @@
+<section>
+    <div *ngIf="emp">
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>{{emp.name}}</mat-card-title>
+              <mat-card-title>{{emp.id}}</mat-card-title>
+            </mat-card-header>
+            <p></p>
+            <mat-divider></mat-divider>
+            <div class="mat-card-content">
+                <mat-card-content>
+                    <p></p>
+                <p> 
+                    Role : {{emp.role}}
+                </p>
+                <p>
+                    Gender : {{emp.gender}}
+                </p>
+                <p>
+                    Date of Birth : {{emp.dob}}
+                </p>
+                </mat-card-content>
+                <mat-card-actions class="buttonsContainer">
+                <button mat-stroked-button (click)="goBack()">Back</button>
+                <div></div>
+                <button mat-stroked-button (click)="openDialog()">Edit</button>
+                </mat-card-actions>
+            </div>
+          </mat-card>
+    </div>
+</section>

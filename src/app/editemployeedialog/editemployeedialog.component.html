@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Employee Details</h2>
+<mat-dialog-content>Edit Employee details here.</mat-dialog-content>
+
+<ng-container *ngIf="data">
+    <mat-form-field class="formField">
+        <mat-label>Employee Name</mat-label>
+        <input matInput [value]="data.name" #name/>
+        @if (name) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="name.value=''">
+            <mat-icon>close</mat-icon>
+            </button>
+        }
+    </mat-form-field>
+
+    <mat-form-field class="formField">
+        <mat-label>Employee Role</mat-label>
+        <mat-select value="{{data.role}}" #role>
+            <mat-option value="Traninee">Traninee</mat-option>
+            <mat-option value="Full Time">Full Time</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="formField"> 
+        <mat-label>Employee Gender</mat-label>
+        <input matInput value="{{data.gender}}" #gender/>
+    </mat-form-field>
+
+
+    <mat-form-field class="formField">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [value]="dob" #date>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+
+
+    <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close (click)="data.name=name.value; data.role = role.value ; 
+    data.gender = gender.value ; data.dob = date.value; sendData()" >{{button}}</button>
+    </mat-dialog-actions>
+
+</ng-container>

@@ -18,4 +18,10 @@ export class EmployeeDetailsService {
     return employees;
   }
 
+  getEmployee(id : number) : Observable<emp>
+  {
+    const emp = employeelist.find(h => h.id === id)!;
+    return of(emp);
+  }
+
 }
