@@ -44,8 +44,14 @@ export class EmployeeComponent implements OnInit{
 
   addemp() : void
   {
-    let id : number | undefined;
-    if(this.emplt) {id = this.emplt[this.emplt.length-1].id + 1;} 
+    let id : number;
+    if(this.emplt.length > 0) 
+    {
+      console.log(this.emplt ,"inside if");
+      
+      id = this.emplt[this.emplt.length-1].id + 1;}
+    else { id = 1; }
+     
     let bl = true;
     const dg = this.dialog.open(EditemployeedialogComponent, {
       height: "500px",

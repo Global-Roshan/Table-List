@@ -22,7 +22,7 @@ import { EditemployeedialogComponent } from '../editemployeedialog/editemployeed
 })
 export class EdetailsComponent implements OnInit{
 
-  emp : emp | undefined;
+  emplt : emp | undefined;
 
   constructor(
     private route : ActivatedRoute,
@@ -38,9 +38,8 @@ export class EdetailsComponent implements OnInit{
   getemp(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.empservice.getEmployee(id)
-      .subscribe(emp => this.emp = emp);
+      .subscribe(emp => this.emplt = emp);
 
-    console.log(this.emp);
   }
 
   goBack(): void{
@@ -51,11 +50,21 @@ export class EdetailsComponent implements OnInit{
 
   openDialog()
   {
-    this.dialog.open(EditemployeedialogComponent, {
+    const dg = this.dialog.open(EditemployeedialogComponent, {
       height: "500px",
       width : "700px",
       disableClose : false,
-      data : this.emp,
+      data : this.emplt,
+    });
+
+    dg.afterClosed().subscribe(data => {
+      if(data !== ""){
+
+      console.log("details log name: ",data.name);
+      
+      this.emplt = data;
+
+    }
     });
   }
 }

@@ -11,12 +11,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgIf } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
   selector: 'app-editemployeedialog',
   standalone: true,
   imports: [MatDialogModule,MatButtonModule,MatFormFieldModule,FormsModule,MatInputModule,
-    MatIconModule,MatSelectModule,MatDatepickerModule,NgIf
+    MatIconModule,MatSelectModule,MatDatepickerModule,NgIf,MatRadioModule
   ],
   templateUrl: './editemployeedialog.component.html',
   styleUrl: './editemployeedialog.component.css'
@@ -31,8 +32,7 @@ export class EditemployeedialogComponent implements OnInit {
   
   ngOnInit(): void {
     this.buttonValue();
-    console.log(this.data?.bool,this.data?.name);
-    this.dob = this.data?.dob ? new Date(this.data?.dob) : new Date();
+    //this.dob = this.data?.dob ? new Date(this.data?.dob) : new Date();
   }
 
   buttonValue()
@@ -43,9 +43,12 @@ export class EditemployeedialogComponent implements OnInit {
     }
   }
 
-  sendData()
+  sendData(date : string)
   {
-    this.dialogRef.close({id:this.data?.id,name:this.data?.name, gender:this.data?.gender, dob:this.data?.dob, role:this.data?.role});
+    const dt = new Date(date);
+    this.dialogRef.close(
+      {id:this.data?.id,name:this.data?.name, gender:this.data?.gender, dob:dt, role:this.data?.role}
+    );
   }
 
 }
